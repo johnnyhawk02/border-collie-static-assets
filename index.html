@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Border Collie World Static Assets</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1 {
+      border-bottom: 2px solid #eee;
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+    }
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .image-card {
+      border: 1px solid #eee;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.2s;
+    }
+    .image-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .image-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      aspect-ratio: 1 / 1;
+    }
+    .image-info {
+      padding: 1rem;
+    }
+    .image-path {
+      font-family: monospace;
+      background: #f5f5f5;
+      padding: 0.5rem;
+      border-radius: 4px;
+      overflow: auto;
+      font-size: 0.85rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>Border Collie World Static Assets</h1>
+  <p>This is a static assets server for Border Collie World. Below are the available optimized images:</p>
+  
+  <div class="image-grid" id="image-grid">
+    <!-- Images will be populated via JavaScript -->
+  </div>
+
+  <script>
+    // List of image files
+    const images = [
+      "Border Collie in the Field.webp",
+      "Playful Pup.webp",
+      "Puppy Close-up.webp",
+      "agility-champion.webp",
+      "beach-day.webp",
+      "collie-frisbee.webp",
+      "collie-herding sheep.webp"
+    ];
+
+    const imageGrid = document.getElementById('image-grid');
+    
+    // Create image cards
+    images.forEach(image => {
+      const card = document.createElement('div');
+      card.className = 'image-card';
+      
+      const img = document.createElement('img');
+      img.src = `/images/${image}`;
+      img.alt = image.replace('.webp', '');
+      
+      const info = document.createElement('div');
+      info.className = 'image-info';
+      
+      const name = document.createElement('h3');
+      name.textContent = img.alt;
+      
+      const path = document.createElement('div');
+      path.className = 'image-path';
+      path.textContent = `https://assets.yoursite.com/images/${image}`;
+      
+      info.appendChild(name);
+      info.appendChild(path);
+      
+      card.appendChild(img);
+      card.appendChild(info);
+      
+      imageGrid.appendChild(card);
+    });
+  </script>
+</body>
+</html> 
